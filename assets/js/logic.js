@@ -1,4 +1,3 @@
-import questions from "./questions";
 
 //  getting DOM elements
 const time = document.querySelector("#time");
@@ -12,10 +11,16 @@ const finalScore = document.querySelector("#final-score");
 const submitBtn = document.querySelector("#submit");
 const feedback = document.querySelector("#feedback");
 
-function showQuestion(question) {
+function showQuestion() {
+  questionTitle.textContent = questionsObject[0].question;
   const ulEl = document.createElement('ul')
-  const choices Arr
+  
+
+  
+
+  // const ulEl = document.createElement('ul')
+  // const choices Arr
 }
 
-
-
+questionTitle.textContent = questionsObject[0].question;
+console.log(questionTitle)
