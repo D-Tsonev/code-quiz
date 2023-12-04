@@ -11,16 +11,29 @@ const finalScore = document.querySelector("#final-score");
 const submitBtn = document.querySelector("#submit");
 const feedback = document.querySelector("#feedback");
 
-function showQuestion() {
-  questionTitle.textContent = questionsObject[0].question;
-  const ulEl = document.createElement('ul')
-  
+const quizLength = questionsObject.length
+// number of questions 
+console.log(quizLength)
 
-  
 
-  // const ulEl = document.createElement('ul')
-  // const choices Arr
+
+
+function generateQuizQuestion() {
+
+  // Current question object
+  const currentQuestion = questionsObject[0];
+  console.log(currentQuestion.A)
+
+  // The question title
+  questionTitle.textContent = currentQuestion.question;
+
+  // a buttons with options
+
+  for (let option of ["A", "B", "C"]) {
+    const optionElement = document.createElement("button");
+    optionElement.textContent = currentQuestion[option];
+    optionElement.setAttribute("data-answer", option)
+    choices.appendChild(optionElement);
+  }
 }
 
-questionTitle.textContent = questionsObject[0].question;
-console.log(questionTitle)
