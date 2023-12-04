@@ -18,12 +18,9 @@ let timeLeft=60
 console.log(quizLength)
 
 
-
-
 function generateQuizQuestion() {
   // Current question object
   const currentQuestion = questionsObject[0];
-  console.log(currentQuestion.A)
 
   // The question title
   questionTitle.textContent = currentQuestion.question;
@@ -57,3 +54,10 @@ function startQuiz(event) {
 // the button that starts the quiz
 startButton.addEventListener('click', startQuiz)
 
+// function that ends the Quiz
+function endQuiz() {
+  timeLeft = 0;
+  time.textContent = timeLeft
+  questions.setAttribute("class", "hide");
+  // endScreen.setAttribute('class','start')
+}
