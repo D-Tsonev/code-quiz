@@ -11,28 +11,53 @@ const finalScore = document.querySelector("#final-score");
 const submitBtn = document.querySelector("#submit");
 const feedback = document.querySelector("#feedback");
 
+
 const quizLength = questionsObject.length
 let timeLeft=60
+
+// selected by the user answer 
+const answer = document.querySelector("data-answer")
 
 // number of questions 
 console.log(quizLength)
 
+// current question Object 
+const currentQuestion = questionsObject[0];
+console.log(currentQuestion)
 
+// correct Answer 
+const correct = currentQuestion.answer
+console.log(correct)
+
+
+// Generate question and options ans storing the selected value by the user
 function generateQuizQuestion() {
-  // Current question object
-  const currentQuestion = questionsObject[0];
-
+  
   // The question title
   questionTitle.textContent = currentQuestion.question;
 
   // Creating buttons with options (A,B,C)
-  for (let option of ["A", "B", "C"]) {
-    const optionElement = document.createElement("button");
-    optionElement.textContent = currentQuestion[option];
-    optionElement.setAttribute("data-answer", option)
-    choices.appendChild(optionElement);
+  for (let choice of ["A", "B", "C"]) {
+    const choiceButton = document.createElement("button");
+    choiceButton.textContent = currentQuestion[choice];
+    choiceButton.setAttribute("data-answer", choice)
+
+    choices.appendChild(choiceButton);
+    choiceButton.addEventListener("click", function(event){
+      event.preventDefault()
+      let answer = event.target.textContent
+      console.log(answer)
+    })
   }
 }
+
+
+
+function  checkAnswer(answer) {
+  if (answer == correct ) {
+    alert('that is correct')}
+  }
+
 
 function startQuiz(event) {
   event.preventDefault();
@@ -48,7 +73,7 @@ function startQuiz(event) {
       timeLeft--;
     }
     time.textContent = timeLeft;
-  }, 1000);
+  }, 60);
 }
 
 // the button that starts the quiz
@@ -61,3 +86,4 @@ function endQuiz() {
   questions.setAttribute("class", "hide");
   // endScreen.setAttribute('class','start')
 }
+
