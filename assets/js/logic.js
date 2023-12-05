@@ -59,11 +59,13 @@ function checkAnswer(userChoice) {
   if (userChoice === correct) {
     score++;
     feedback.classList.remove("hide")
-    console.log('Correct answer!', score);
+    console.log('correct', score);
+    feedback.textContent = "Correct"
   } else {
     timeLeft -10 
-    console.log('Incorrect answer!',score);
+    console.log('wrong',score);
     feedback.classList.remove("hide")
+    feedback.textContent = "Wrong"
   }
   currentQuestionIndex++;
 
