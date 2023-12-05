@@ -14,6 +14,8 @@ const feedback = document.querySelector("#feedback");
 
 const quizLength = questionsObject.length
 let timeLeft=60
+let score = 0
+let currentQuestionIndex = 0
 
 // selected by the user answer 
 const answer = document.querySelector("data-answer")
@@ -21,13 +23,13 @@ const answer = document.querySelector("data-answer")
 // number of questions 
 console.log(quizLength)
 
-// current question Object 
-const currentQuestion = questionsObject[0];
+// current question Object
+let currentQuestion = questionsObject[currentQuestionIndex];
 console.log(currentQuestion)
 
 // correct Answer 
-const correct = currentQuestion.answer
-console.log(correct)
+
+// console.log(correct)
 
 
 // Generate question and options ans storing the selected value by the user
@@ -36,27 +38,43 @@ function generateQuizQuestion() {
   // The question title
   questionTitle.textContent = currentQuestion.question;
 
+  choices.textContent = ""
+
   // Creating buttons with options (A,B,C)
   for (let choice of ["A", "B", "C"]) {
-    const choiceButton = document.createElement("button");
+    let choiceButton = document.createElement("button");
     choiceButton.textContent = currentQuestion[choice];
     choiceButton.setAttribute("data-answer", choice)
 
     choices.appendChild(choiceButton);
-    choiceButton.addEventListener("click", function(event){
-      event.preventDefault()
-      let answer = event.target.textContent
-      console.log(answer)
+
+    choiceButton.addEventListener("click", function(){
+      checkAnswer(choice)
     })
   }
 }
 
 
+function checkAnswer(userChoice) {
+  let correct = currentQuestion.answer;
 
-function  checkAnswer(answer) {
-  if (answer == correct ) {
-    alert('that is correct')}
+  if (userChoice === correct) {
+    score++;
+    console.log('Correct answer!');
+  } else {
+    console.log('Incorrect answer!');
   }
+
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < quizLength) {
+    currentQuestion = questionsObject[currentQuestionIndex];
+    generateQuizQuestion();
+  } else {
+    console.log('Quiz finished. Final score: ', score);
+  }
+}
+
 
 
 function startQuiz(event) {
