@@ -12,7 +12,7 @@ Create a code quiz that contains the following requirements:
 * A start button that when clicked a timer starts and the first question appears.
  
   * Questions contain buttons for each answer.
-  
+
   * When answer is clicked, the next question appears
 
   * If the answer clicked was incorrect then subtract time from the clock
@@ -44,3 +44,8 @@ The project currently logs the score in the console but lacks a mechanism to sav
 
 Please note that this project is a work in progress, and additional features, such as saving user data and enhancing the user interface, are planned for future development.
 
+
+
+<p>Link to  <a href="https://github.com/D-Tsonev/code-quiz">Repository</a><p>
+
+<p>Link to  <a href="https://d-tsonev.github.io/code-quiz/">GitHub Page</a><p>
