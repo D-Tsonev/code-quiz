@@ -93,7 +93,7 @@ function startQuiz(event) {
       timeLeft--;
     }
     time.textContent = timeLeft;
-  }, 20);
+  }, 1000);
 }
 
 // the button that starts the quiz
